@@ -88,8 +88,11 @@ describe("About Applying What We Have Learnt", function() {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
-
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+	ingredientCount = _(products).chain()
+	  			.map(function(pizza) { return pizza.ingredients})
+	  			.flatten()
+	  			.reduce(functions(s, i) {return ingredientCount[i] = (ingredientCount[i] || 0) + 1})
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
